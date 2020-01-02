@@ -14,6 +14,7 @@ node:12.13.1
 npm:6.12.1
 yo:3.1.1
 yckoa:0.0.7
+pm2:4.2.1
 ```
 
 #### Dependencies
@@ -21,6 +22,7 @@ yckoa:0.0.7
 - yeoman
 - yckoa
 - mongodb
+- pm2
 
 
 ##### build
