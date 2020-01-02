@@ -11,6 +11,10 @@ exports.default = mongoose.model('Authinelog', new mongoose.Schema({
         type: String,
         required: true
     },
+    month: {
+        type: String,
+        required: true
+    },
     time: {
         type: Date,
         default: Date.now()
