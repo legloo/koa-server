@@ -1,0 +1,155 @@
+paths:
+
+  /api/authine_logs:
+  # index
+    get:
+      summary: List all Authinelogs
+      produces:
+        - application/json
+      tags:
+        - Authinelog
+      parameters:
+        - name: _options
+          in: query
+          schema:
+            "$ref": "#/definitions/PaginateOptions"
+        - name: _filters
+          in: query
+          schema:
+            "$ref": "#/definitions/AuthinelogsFilters"
+      responses:
+        200:
+          description: Success
+          schema:
+            "$ref": "#/definitions/Authinelogs"
+        4xx:
+          description: Fail
+          schema:
+            "$ref": "#/definitions/Error"
+
+  # create
+    post:
+      summary: Create a new Authinelog
+      produces:
+        - application/json
+      tags:
+        - Authinelog
+      parameters:
+        - name: json
+          in: body
+          type: object
+          required: true
+          schema:
+            "$ref": "#/definitions/AuthinelogModel"
+      responses:
+        201:
+          description: Success
+          schema:
+            "$ref": "#/definitions/Authinelog"
+        4xx:
+          description: Fail
+          schema:
+            "$ref": "#/definitions/Error"
+
+  /api/authine_logs/{id}:
+  # show
+    get:
+      summary: Find a Authinelog by ID
+      produces:
+        - application/json
+      tags:
+        - Authinelog
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: _options
+          in: query
+          schema:
+            "$ref": "#/definitions/ShowOptions"
+      responses:
+        200:
+          description: Success
+          schema:
+            "$ref": "#/definitions/Authinelog"
+        4xx:
+          description: Fail
+          schema:
+            "$ref": "#/definitions/Error"
+
+  # update
+    put:
+      summary: Modify a Authinelog
+      produces:
+        - application/json
+      tags:
+        - Authinelog
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: json
+          in: body
+          type: object
+          required: true
+          schema:
+            "$ref": "#/definitions/AuthinelogModel"
+      responses:
+        200:
+          description: Success
+          schema:
+            "$ref": "#/definitions/Authinelog"
+        4xx:
+          description: Fail
+          schema:
+            "$ref": "#/definitions/Error"
+
+  # updatePartial
+    patch:
+      summary: Modify a Authinelog partially
+      produces:
+        - application/json
+      tags:
+        - Authinelog
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: json
+          in: body
+          type: object
+          required: true
+          schema:
+            "$ref": "#/definitions/AuthinelogModel"
+      responses:
+        200:
+          description: Success
+          schema:
+            "$ref": "#/definitions/Authinelog"
+        4xx:
+          description: Fail
+          schema:
+            "$ref": "#/definitions/Error"
+
+  # remove
+    delete:
+      summary: Remove a Authinelog by ID
+      produces:
+        - application/json
+      tags:
+        - Authinelog
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        204:
+          description: Success
+        4xx:
+          description: Fail
+          schema:
+            "$ref": "#/definitions/Error"

@@ -87,11 +87,11 @@ const paths = {
 //
 // tasks
 //
-gulp.task('clear:tmp', gulp.series(() => gulp.src(paths.tmp).pipe(clean())))
-gulp.task('clear:cache', gulp.series(() => gulp.src('.gulp-cache').pipe(clean())))
+gulp.task('clear:tmp', gulp.series(() => gulp.src(paths.tmp,{allowEmpty: true}).pipe(clean())))
+gulp.task('clear:cache', gulp.series(() => gulp.src('.gulp-cache',{allowEmpty: true}).pipe(clean())))
 
 gulp.task('clear:dev', gulp.series(['clear:tmp', 'clear:cache'], cb => cb()))
-gulp.task('clear:dist', gulp.series(() => gulp.src(paths.dist).pipe(clean({ read: false }))))
+gulp.task('clear:dist', gulp.series(() => gulp.src(paths.dist,{allowEmpty: true}).pipe(clean({ read: false }))))
 
 gulp.task('clear', gulp.series(cb => cb(), 'clear:dev', 'clear:dist'))
 
@@ -196,4 +196,4 @@ gulp.task('watch', () => {
         })
 })
 
-gulp.task('serve', gulp.series(['compile','generateDocs']))
+gulp.task('serve', gulp.series(['clear','compile','generateDocs']))

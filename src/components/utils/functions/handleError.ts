@@ -2,7 +2,7 @@ import { Context } from 'koa';
 import { getErrorStatus, getErrorStatusCode } from '../';
 import Boom = require('boom');
 
-export function handleError(ctx: Context, error: Error, statusCode: number = 500): void {
+export function handleError(ctx: any, error: Error, statusCode: number = 500): void {
   if (error instanceof Error) {
     let json: any = {
       name: error.name,

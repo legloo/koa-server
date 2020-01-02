@@ -1,0 +1,33 @@
+definitions:
+
+  Authinelog:
+    allOf:
+      - "$ref": "#/definitions/AuthinelogModel"
+      - properties:
+          _id:
+            type: string
+
+  AuthinelogModel:
+    type: object
+    properties:
+      name:
+        type: string
+      info:
+        type: string
+      active:
+        type: boolean
+
+  Authinelogs:
+    allOf:
+      - properties:
+          docs:
+            type: array
+            items:
+              "$ref": "#/definitions/Authinelog"
+      - "$ref": "#/definitions/PaginateResult"
+
+  AuthinelogsFilters:
+    type: object
+    properties:
+      active:
+        type: boolean

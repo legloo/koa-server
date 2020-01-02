@@ -111,7 +111,7 @@ function validatePresenceOf(value) {
 }
 
 AuthSchema
-  .pre('save', async function (next) {
+  .pre('save', async (next) => {
     // Handle new/update passwords
     if (!this.isModified('password')) {
       return next()

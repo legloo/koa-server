@@ -114,33 +114,31 @@ function validatePresenceOf(value) {
     return value && value.length;
 }
 AuthSchema
-    .pre('save', function (next) {
-    return __awaiter(this, void 0, void 0, function* () {
-        // Handle new/update passwords
-        if (!this.isModified('password')) {
+    .pre('save', (next) => __awaiter(void 0, void 0, void 0, function* () {
+    // Handle new/update passwords
+    if (!this.isModified('password')) {
+        return next();
+    }
+    if (!validatePresenceOf(this.password)) {
+        if (!this.providers || !this.providers.length) {
+            return next(new Error('Invalid password'));
+        }
+        else {
             return next();
         }
-        if (!validatePresenceOf(this.password)) {
-            if (!this.providers || !this.providers.length) {
-                return next(new Error('Invalid password'));
-            }
-            else {
-                return next();
-            }
-        }
-        // Make salt
-        try {
-            let salt = yield this.makeSalt();
-            this.salt = salt;
-            let hashedPassword = yield this.encryptPassword(this.password);
-            this.password = hashedPassword;
-            next();
-        }
-        catch (e) {
-            next(e);
-        }
-    });
-});
+    }
+    // Make salt
+    try {
+        let salt = yield this.makeSalt();
+        this.salt = salt;
+        let hashedPassword = yield this.encryptPassword(this.password);
+        this.password = hashedPassword;
+        next();
+    }
+    catch (e) {
+        next(e);
+    }
+}));
 /**
  * Methods
  */
