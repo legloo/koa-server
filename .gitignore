@@ -1,5 +1,5 @@
 /node_modules
 /logs
 .Ds_store
-/tmp
+/tmp/
 package-lock.json

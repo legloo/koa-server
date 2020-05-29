@@ -3,7 +3,7 @@ import * as passport from 'koa-passport';
 import * as config from '../config';
 import * as jwt from 'jsonwebtoken';
 import * as compose from 'koa-compose';
-import Auth from './model';
+import Auth from '../api/user/model';
 import * as Utils from '../components/utils';
 
 export function signToken(id, roles, providers?) {
