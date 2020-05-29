@@ -9,7 +9,7 @@ export function handleError(ctx: any, error: Error, statusCode: number = 500): v
       message: error.message
     };
     // boom.
-
+    console.log('error=>>>>>>>>>>>>>>',error);
     let be: Boom = getErrorStatus(error);
     // be.output.payload.details = {
     //   name: error.name

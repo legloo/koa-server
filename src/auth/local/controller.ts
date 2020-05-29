@@ -1,6 +1,6 @@
 import * as passport from 'koa-passport'
 import { signToken } from '../service'
-import Auth from '../model'
+import Auth from '../../api/user/model';
 import * as Utils from '../../components/utils'
 import * as config from '../../config'
 import { EntityNotFoundError, ValidationError, getErrorStatusCode } from '../../components/utils'
@@ -27,7 +27,9 @@ export async function signIn(ctx: Utils.BetterContext) {
 
 export async function signUp(ctx: Utils.BetterContext) {
   try {
+    console.log(ctx.request.fields);
     let newUser = new Auth(ctx.request.fields);
+    console.log('newUser=>>>',newUser);
     newUser['roles'] = config.auth.roles.default;
     await newUser.save();
     const token = signToken(newUser._id, newUser['roles']);

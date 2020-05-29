@@ -1,6 +1,6 @@
 {
     "apps": {
-        "name": "zyh-server", 
+        "name": "server", 
         "script": "tmp/index.js",  
         "watch": true,      
         "ignore_watch": [

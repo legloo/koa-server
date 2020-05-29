@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const service_1 = require("../service");
-const model_1 = require("../model");
+const model_1 = require("../../api/user/model");
 const Utils = require("../../components/utils");
 const config = require("../../config");
 function signIn(ctx) {
@@ -40,7 +40,9 @@ exports.signIn = signIn;
 function signUp(ctx) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            console.log(ctx.request.fields);
             let newUser = new model_1.default(ctx.request.fields);
+            console.log('newUser=>>>', newUser);
             newUser['roles'] = config.auth.roles.default;
             yield newUser.save();
             const token = service_1.signToken(newUser._id, newUser['roles']);

@@ -8,6 +8,7 @@ function handleError(ctx, error, statusCode = 500) {
             message: error.message
         };
         // boom.
+        console.log('error=>>>>>>>>>>>>>>', error);
         let be = __1.getErrorStatus(error);
         // be.output.payload.details = {
         //   name: error.name

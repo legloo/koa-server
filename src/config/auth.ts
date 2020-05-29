@@ -14,5 +14,5 @@ export const auth = {
     default: ['user']
   },
 
-  expires: 60 * 60 * 24 * 360 * 10
+  expires: 60 * 60 *1 //一天
 }

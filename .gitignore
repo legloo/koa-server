@@ -1,3 +1,5 @@
 /node_modules
 /logs
 .Ds_store
+/tmp
+package-lock.json
