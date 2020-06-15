@@ -12,14 +12,14 @@ let router = new Router({
 
 router.get('/',isAuthenticated(), controller.index);
 
-router.post('/', controller.create);
+router.post('/', isAuthenticated(),controller.create);
 
-router.get('/:id', controller.show);
+router.get('/:id',isAuthenticated(), controller.show);
 
-router.put('/:id', controller.update);
+router.put('/:id',isAuthenticated(), controller.update);
 
-router.patch('/:id', controller.update);
+router.patch('/:id',isAuthenticated(), controller.update);
 
-router.delete('/:id', controller.destroy);
+router.delete('/:id',isAuthenticated(), controller.destroy);
 
 export default router;

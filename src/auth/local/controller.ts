@@ -10,6 +10,7 @@ export async function signIn(ctx: Utils.BetterContext) {
     let user: any = await Auth.findOne({
       username: ctx.request.fields.username
     }).exec();
+    console.log('user=>>>>>>',user);
     if (!user) {
       throw new Utils.AuthError('This username is not registered');
     }

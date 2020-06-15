@@ -6,7 +6,9 @@ class Controller extends Utils.Controller {
   // Gets a list of Models
   public async index(ctx: Utils.BetterContext) {
     try {
-      let paginateResult = await Utils.paginate(this.model, ctx);
+      let paginateResult = await Utils.paginate(this.model, ctx, {
+        user: ctx.user._id
+      });
       ctx.status = 200;
       ctx.body = paginateResult;
     } catch (e) {
@@ -28,6 +30,7 @@ class Controller extends Utils.Controller {
 
   // Creates a new Model in the DB
   public async create(ctx: Utils.BetterContext) {
+    ctx.request.fields.user = ctx.user._id;
     try {
       delete ctx.request.fields._id;
       let entity = await this.model.create(ctx.request.fields)
